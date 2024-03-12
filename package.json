@@ -1,6 +1,10 @@
 {
+
+  "engines":{
+    "node" : "21.6.2"
+  },
   "name": "backend-passport",
-  "version": "21.6.2",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node app.js"
