@@ -5,13 +5,27 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const flash = require('connect-flash');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const passport= require('passport');
-
 
 var usersRouter = require('./routes/users');
 // requires the model with Passport-Local Mongoose plugged in
 const User = require('./models/userModel');
 
+//------------------mongo session-----------------
+const store = MongoStore.create({
+    mongoUrl: 'mongodb://127.0.0.1:27017/college',
+    crypto: {
+    secret: 'keyboard cat'
+  },
+    touchAfter: 24 * 3600 // time period in seconds
+  })
+
+
+store.on('error',(err)=>{
+  console.log('error in mongos session store',err);
+});
+//----------------------------------------------------
 var app = express();
 
 // view engine setup
@@ -21,6 +35,7 @@ app.set('view engine', 'ejs');
 app.use(flash());
 
 app.use(session({
+  store: store,
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true
