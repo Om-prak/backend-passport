@@ -12,7 +12,7 @@ const User = require('./models/userModel');
 
 //------------------mongo session-----------------
 const store = MongoStore.create({
-    mongoUrl: 'mongodb://127.0.0.1:27017/college',
+    mongoUrl: 'mongodb+srv://prakashv124421:myQg3sisrpw6Grkv@cluster0.hfqi2tc.mongodb.net/',
     crypto: {
     secret: 'keyboard cat'
   },
