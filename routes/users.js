@@ -31,15 +31,21 @@ router.post('/', function(req, res, next) {
   });
 
 router.get('/login', function(req, res, next) {
-  res.render('login');
+  
+  res.render('login', { error : req.flash('error')});
 });
 
 
 
 router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate('local', { 
+    
+    successRedirect: '/profile',
+    failureRedirect: '/login',
+    failureFlash: true
+   }),
   function(req, res) {
-    res.redirect('/profile');
+    //res.redirect('/profile');
   });
 
 router.get('/logout', function(req, res, next){

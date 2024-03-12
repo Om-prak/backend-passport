@@ -105,3 +105,11 @@ body{
   background: linear-gradient(-90deg, #003A74, #006AD5);
   box-shadow: 1px 5px 9px rgba(211, 211, 211, .9);
 }
+
+.error{
+  font-weight: 500;
+  color: red;
+  text-transform: capitalize;
+  margin: 7px 0px;
+  //background-color: black;
+}
